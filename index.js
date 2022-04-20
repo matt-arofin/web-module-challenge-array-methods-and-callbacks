@@ -8,29 +8,29 @@ Practice accessing data by console.log-ing the following pieces of data note.
 💡 HINT: You may want to filter the data first 😉*/
 
 //(a) Home Team name for 2014 world cup final
-console.log("Practice 1 - Home Team:");
+/* console.log("Practice 1 - Home Team:");
 const homeTeam = fifaData.filter((element) => {if(element.Year === 2014 && element.Stage === 'Final'){return console.log(element['Home Team Name'])}});
-console.log(homeTeam);
+console.log(homeTeam); */
 
 //(b) Away Team name for 2014 world cup final
-console.log("Practice 2 - Away Team:");
+/* console.log("Practice 2 - Away Team:");
 const awayTeam = fifaData.filter((element) => {if(element.Year === 2014 && element.Stage === 'Final'){return console.log(element['Away Team Name'])}});
-console.log(awayTeam);
+console.log(awayTeam); */
 
 //(c) Home Team goals for 2014 world cup final
-console.log("Practice 3 - Home Team Goals:");
+/* console.log("Practice 3 - Home Team Goals:");
 const homeGoals = fifaData.filter((element) => {if(element.Year === 2014 && element.Stage === 'Final'){return console.log(element['Home Team Goals'])}});
-console.log(homeGoals);
+console.log(homeGoals); */
 
 //(d) Away Team goals for 2014 world cup final
-console.log("Practice 4 - Away Team Goals:");
+/* console.log("Practice 4 - Away Team Goals:");
 const awayGoals = fifaData.filter((element) => {if(element.Year === 2014 && element.Stage === 'Final'){return console.log(element['Away Team Goals'])}});
-console.log(awayGoals);
+console.log(awayGoals); */
 
 //(e) Winner of 2014 world cup final */
-console.log("Practice 5 - Winner:");
+/* console.log("Practice 5 - Winner:");
 const cupWinner = fifaData.filter((element) => {if(element.Year === 2014 && element.Stage === 'Final'){if(element['Away Team Goals'] > element['Home Team Goals']){return console.log(element['Away Team Name'])} else{console.log(element['Home Team Name'])}}});
-console.log(cupWinner)
+console.log(cupWinner) */
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -41,7 +41,6 @@ Use getFinals to do the following:
 💡 HINT - you should be looking at the stage key inside of the objects
 */
 
-
 function getFinals(arr) {
     const finalTeams = [];
     for(let i = 0; i < arr.length; i++){
@@ -49,7 +48,8 @@ function getFinals(arr) {
             finalTeams.push(arr[i]);
         }  
     }return finalTeams;
- } console.log(getFinals(fifaData));
+ } 
+ /* console.log(getFinals(fifaData)); */
 
 
 
@@ -59,11 +59,16 @@ Use the higher-order function called getYears to do the following:
 2. Receive a callback function as the second parameter that will take getFinals from task 2 as an argument
 3. Return an array called years containing all of the years in the getFinals data set*/
 
-function getYears(array, cbfunction) {
-    let years = cbfunction(array.Years);
-    return years.Years
+function getYears(arr, cbfunction) {
+    let finals = cbfunction(arr);
+    console.log(finals)
+    let years = [];
+    for(let i = 0; i < finals.length; i++){
+        years.push(finals[i].Year);
+    }
+    return years;
 }
-console.log(getYears(fifaData, getFinals))
+/* console.log(getYears(fifaData, getFinals)) */
 
 
 
@@ -75,11 +80,21 @@ Use the higher-order function getWinners to do the following:
 💡 HINT: Don't worry about ties for now (Please see the README file for info on ties for a stretch goal.)
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
-    /* code here */
+console.log("Task 4 Start - getWinners:")
+function getWinners(arr, cbFunction) {
+    const finals = cbFunction(arr);
+    const winners = [];
+    for(let i = 0; i < arr.length; i++){
+        if(finals[i]['Away Team Goals'] > finals[i]['Home Team Goals']){
+            winners.push(finals[i]['Away Team Name']);
+        } else if(finals[i]['Home Team Goals'] > finals[i]['Away Team Goals']){
+            winners.push(finals[i]['Home Team Name']);
+        }
+    } return winners;
 }
 
-
+console.log(fifaData, getFinals)
+console.log("_____________________________________________________________________")
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use the higher-order function getWinnersByYear to do the following:
