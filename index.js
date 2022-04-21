@@ -93,8 +93,8 @@ function getWinners(arr, cbFunction) {
     } return winners;
 }
 
-console.log(getWinners(fifaData, getFinals))
-console.log("_____________________________________________________________________")
+/* console.log(getWinners(fifaData, getFinals))
+console.log("_____________________________________________________________________") */
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use the higher-order function getWinnersByYear to do the following:
@@ -157,12 +157,30 @@ Create a function called `getCountryWins` that takes the parameters `data` and `
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins(/* code here */) {
+//compare data from stage: 'Finals' - use getWinners array and match with team names?
+//
+//
 
+function getCountryWins(data, initials) {
+    // data = fifaData
+    const winnerNames = getWinners(data);
+    const winCount = 0;
+    const teamName = ;
+    //match team initials to team name
+    //find team name in winnerNames and count occurences.
+
+    for(let i = 0; i < winnerNames.length; i++){
+        if(data[i]['Home Team Name'] === winnerNames[i]){
+            winCount++
+        } else if(data['Away Team Name']){
+            winCount++
+        }
+    }
     /* code here */
 
 }
 
+//console.log(getCountryWins(fifaData, "USA"))
 
 
 /* 💪💪💪💪💪 Stretch 2: 💪💪💪💪💪 
